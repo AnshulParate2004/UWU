@@ -7,6 +7,12 @@
 body {
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
+    margin: 0; /* Make sure this is here */
+    padding: 0; /* Make sure this is here */
+}
+section {
+    margin: 0 !important; /* Remove all section margins */
+    display: block;
 }
 
 .hero-section {
@@ -17,6 +23,7 @@ body {
     margin: 0 auto;
     background: linear-gradient(180deg, rgba(250, 252, 255, 1) 0%, rgba(197, 217, 254, 1) 100%);
     overflow: hidden;
+    margin-bottom: 0;
 }
 
 .grid-background {
@@ -338,40 +345,43 @@ body {
 }
 
 /* Graph Section */
+
+
 .graph-section {
     width: 100%;
     max-width: 1920px;
     margin: 0 auto;
-    height: 142px;
+    height: auto;
     background: rgba(255, 255, 255, 0.48);
     backdrop-filter: blur(48px);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 23px 0;
+    padding: 0; /* Changed from 40px 20px */
+    overflow-x: auto;
 }
 
 .graph-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 60px;
+    gap: 0; /* Changed from 30px */
+    width: 100%;
 }
 
-.graph-text {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 1.5em;
-    text-transform: uppercase;
-    color: #4A5565;
-    text-align: center;
+.graph-logos {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .graph-image {
-    width: 2039px;
-    height: 60px;
+    width: 100%;
+    max-width: 2039px;
+    height: auto;
     object-fit: contain;
+    display: block; /* Add this to remove any inline spacing */
 }
 
 /* Section Styles */
@@ -383,6 +393,7 @@ body {
     padding: 60px 0;
     display: flex;
     justify-content: center;
+    margin-top: 0; 
 }
 
 .section-container {
@@ -433,132 +444,166 @@ body {
     width: 100%;
     max-width: 1920px;
     margin: 0 auto;
-    padding: 1180px 0 0;
+    padding: 120px 0;
     background: #FFFFFF;
     position: relative;
 }
 
 .journey-container {
-    width: 1440px;
+    width: 100%;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 0 240px;
+    padding: 0 20px;
+    position: relative;
 }
 
 .journey-visualization {
     position: relative;
-    width: 1440px;
-    height: 516px;
+    width: 100%;
+    max-width: 1200px;
+    height: 700px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Background Circles */
+/* Circular Path Design */
 .journey-bg-circle {
     position: absolute;
-    width: 480px;
-    height: 480px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 50%;
 }
 
 .journey-bg-circle-1 {
-    left: 480px;
-    top: 18px;
+    width: 600px;
+    height: 600px;
     background: #ECEEFF;
+    z-index: 1;
 }
 
 .journey-bg-circle-2 {
-    left: 480px;
-    top: 18px;
-    background: #4E35FF;
-    opacity: 0.1;
+    width: 500px;
+    height: 500px;
+    background: rgba(78, 53, 255, 0.05);
+    z-index: 2;
 }
 
+/* Circular Progress Arc */
+.journey-visualization::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    height: 650px;
+    border-radius: 50%;
+    border: 40px solid transparent;
+    border-top-color: #4E35FF;
+    border-right-color: #4E35FF;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    z-index: 3;
+}
 /* Path Numbers */
 .path-number {
     position: absolute;
     font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 1.5em;
-    letter-spacing: -0.025em;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1;
     z-index: 10;
+    background: white;
+    padding: 8px 16px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .path-number-1 {
-    left: 712px;
-    top: 28px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
     color: #FFFFFF;
-    width: 16px;
-    height: 24px;
+    background: #4E35FF;
 }
 
 .path-number-2 {
-    left: 930px;
-    top: 246px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     color: #4A5565;
-    width: 20px;
-    height: 24px;
 }
 
 .path-number-3 {
-    left: 710px;
-    top: 467px;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
     color: #4A5565;
-    width: 20px;
-    height: 24px;
 }
 
 .path-number-4 {
-    left: 489px;
-    top: 246px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
     color: #4A5565;
-    width: 21px;
-    height: 24px;
 }
 
-/* Path Labels */
+/* Path Labels - Left Side */
 .path-labels {
     position: absolute;
-    left: 90px;
-    top: 228px;
-    width: 124px;
-    height: 60px;
+    left: -150px;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0;
+    z-index: 10;
 }
 
 .path-label {
     font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 40px;
-    line-height: 1.5em;
-    letter-spacing: -0.025em;
-    color: #101828;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 1.2;
+    color: #4E35FF;
+    border-left: 4px solid #4E35FF;
+    padding-left: 20px;
 }
+
 
 /* Center Circle */
 .journey-center-circle {
     position: absolute;
-    left: 540px;
-    top: 78px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 360px;
     height: 360px;
-    background: #ECEEFF;
-    border: 0.73px solid #E2E4FF;
-    border-radius: 585.37px;
+    background: #FFFFFF;
+    border: 2px solid #E2E4FF;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 5;
+    box-shadow: 0 10px 40px rgba(78, 53, 255, 0.1);
 }
 
 .journey-center-card {
-    width: 256px;
-    height: 184.76px;
+    width: 280px;
+    height: auto;
     background: #FFFFFF;
-    border: 0.58px solid #E2E7EE;
-    border-radius: 9.27px;
-    padding: 9.27px;
+    border: 1px solid #E2E7EE;
+    border-radius: 12px;
+    padding: 20px;
     position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .card-header-bar {
@@ -566,24 +611,24 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 27.8px;
+    height: 40px;
     background: #FBFCFE;
-    border-bottom: 0.58px solid #E2E7EE;
-    border-radius: 9.27px 9.27px 0 0;
+    border-bottom: 1px solid #E2E7EE;
+    border-radius: 12px 12px 0 0;
     display: flex;
     align-items: center;
-    padding: 9.27px;
+    padding: 0 16px;
 }
 
 .card-dots {
     display: flex;
-    gap: 4.63px;
+    gap: 6px;
     align-items: center;
 }
 
 .dot {
-    width: 9.27px;
-    height: 9.27px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
 }
 
@@ -613,40 +658,41 @@ body {
     height: 21px;
 }
 
+.card-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #101828;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 .card-stats {
-    position: absolute;
-    left: 16.22px;
-    top: 80.51px;
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 16px;
+    margin-bottom: 20px;
 }
 
 .stat-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 4px;
 }
 
 .stat-label {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 8.11px;
-    line-height: 1.5em;
+    font-size: 12px;
     color: #4A5565;
-    width: 62px;
-    height: 12px;
 }
 
 .stat-value {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 12.74px;
-    line-height: 1.5em;
+    font-size: 16px;
     color: #101828;
-    position: absolute;
-    right: 16.22px;
 }
 
 .stat-row:first-child .stat-value {
@@ -720,13 +766,12 @@ body {
 }
 
 .card-progress {
-    position: absolute;
-    left: 16.22px;
-    top: 102.52px;
-    width: 158.12px;
-    height: 5.79px;
+    width: 100%;
+    height: 8px;
     background: #ECF1FA;
-    border-radius: 28.96px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 16px 0;
 }
 
 .progress-bar {
@@ -741,10 +786,12 @@ body {
 }
 
 .progress-bar-fill {
-    width: 86.3px;
-    background: #ECF1FA;
-    top: 112.94px;
+    height: 100%;
+    background: linear-gradient(90deg, #4E35FF 0%, #7C5FFF 100%);
+    border-radius: 20px;
+    width: 65%;
 }
+
 
 .card-clock-icon {
     position: absolute;
@@ -798,26 +845,29 @@ body {
 /* Path Content on Right */
 .journey-path-content {
     position: absolute;
-    left: 1068px;
-    top: 186px;
-    width: 302px;
-    height: 172px;
+    right: -350px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 320px;
     display: flex;
     flex-direction: column;
     gap: 0;
+    z-index: 10;
 }
 
 .path-content-item {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    width: 300px;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
 }
 
 .path-content-item:first-child {
-    margin-bottom: 12px;
+    opacity: 1;
 }
+
 
 .path-content-item:nth-child(2) {
     margin-top: 204px;
@@ -834,10 +884,9 @@ body {
 
 .path-title {
     font-family: 'Poppins', sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 24px;
-    line-height: 1.5em;
-    letter-spacing: -0.041666666666666664em;
+    line-height: 1.3;
     color: #101828;
 }
 
@@ -852,7 +901,7 @@ body {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 16px;
-    line-height: 1.5em;
+    line-height: 1.5;
     color: #4A5565;
 }
 
@@ -885,12 +934,13 @@ body {
     display: flex;
     justify-content: center;
     gap: 24px;
-    padding: 0 547px;
-    padding-bottom: 197px;
+    padding: 0 40px; /* Changed from padding: 0 547px */
+    padding-bottom: 80px; /* Changed from 197px */
+    flex-wrap: wrap;
 }
 
 .pricing-card {
-    width: 826px;
+    width: 500px;
     background: #F8F8F8;
     border: 1px solid #EDEDED;
     border-radius: 24px;
@@ -1163,3 +1213,34 @@ body {
     }
 }
 
+/* Responsive */
+@media (max-width: 1400px) {
+    .path-labels {
+        left: 20px;
+        top: auto;
+        bottom: -100px;
+        transform: none;
+        flex-direction: row;
+        gap: 20px;
+    }
+    
+    .path-label {
+        font-size: 24px;
+    }
+    
+    .journey-path-content {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin-top: 80px;
+        width: 100%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .path-content-item {
+        opacity: 1;
+    }
+}
